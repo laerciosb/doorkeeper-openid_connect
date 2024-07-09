@@ -9,7 +9,7 @@ module Doorkeeper
 
       if Gem.loaded_specs['doorkeeper'].version >= Gem::Version.create('5.5.0')
         belongs_to :access_grant,
-                   class_name: Doorkeeper.config.access_grant_class.to_s,
+                   class_name: "::#{Doorkeeper.config.access_grant_class}",
                    inverse_of: :openid_request
       else
         belongs_to :access_grant,
